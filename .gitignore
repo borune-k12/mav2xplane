@@ -79,3 +79,6 @@ android/gradle.properties
 # doxygen
 src/html/
 src/latex/
+
+#binary
+mav2xplane
