@@ -317,6 +317,15 @@ void UAS::readData()
             {
                 _handleAutopilotVersion(&msg);
             }
+
+            case MAVLINK_MSG_ID_GLOBAL_POSITION_INT:
+            {
+                mavlink_global_position_int_t pos;
+                mavlink_msg_global_position_int_decode(&msg,&pos);
+
+                qDebug() << "alt:" << pos.alt/1000.0 << "alt rel:" << pos.relative_alt/1000.0;
+                break;
+            }
             default:{
             }
             }

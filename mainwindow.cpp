@@ -29,9 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     centralWidget = new QWidget();
     grid = new QGridLayout;
     xplane_connection = new ConnectionWidget(0);
-    xplane_connection->setColor(Qt::red);
-    remoteHost = xplane_connection->getName();
-
+    xplane_connection->setColor(Qt::red);    
 
     px4_connection = new ConnectionWidget(1);
     px4_connection->setColor(Qt::red);
@@ -172,6 +170,7 @@ void MainWindow::onStartClicked()
 
         link = new QGCXPlaneLink(xplane_connection->getName(),xplane_connection->getPort());
 
+        remoteHost = xplane_connection->getName();
         connect(link,&QGCXPlaneLink::hostConnected,this,&MainWindow::onXplaneConnected);
         connect(uas, &UAS::hilControlsChanged,link,&QGCXPlaneLink::updateControls,Qt::QueuedConnection);
 
